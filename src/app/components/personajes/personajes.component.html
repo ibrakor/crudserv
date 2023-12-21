@@ -1,0 +1,18 @@
+<div class="container mt-4 d-flex justify-content-center" style="position: relative; top: 70px;">
+  <!-- Ajustes de estilo -->
+  <div class="card-deck">
+    <div class="card mb-4" style="width: 20rem;" *ngFor="let akatsuki of akatsukiResponse.akatsuki">
+      <img *ngIf="akatsuki.mostrarImagen" id="image{{akatsuki.id}}" src="{{akatsuki.images[0]}}" class="card-img-top"
+           alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{akatsuki.name}}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <button (click)="habilitarFoto(akatsuki)" type="button"
+                class="btn btn-outline-primary">{{ akatsuki.mostrarImagen ? 'Ocultar foto' : 'Ver foto' }}</button>
+        <button (click)="modificarNombre(akatsuki)" type="button" class="btn btn-outline-info">Modificar nombre</button>
+        <button (click)="eliminar(akatsuki)" type="button" class="btn btn-outline-danger">Eliminar</button>
+      </ul>
+    </div>
+  </div>
+</div>

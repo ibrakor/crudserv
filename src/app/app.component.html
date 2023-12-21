@@ -1,15 +1,2 @@
-<div class="container mt-4 d-flex justify-content-center"> <!-- Centra los elementos y agrega margen en la parte superior -->
-  <div class="card-deck"> <!-- Agrupa las tarjetas en un deck -->
-    <div class="card mb-4" style="width: 20rem;" *ngFor="let akatsuki of akatsukiResponse.akatsuki">
-      <img *ngIf="akatsuki.mostrarImagen" id="image{{akatsuki.id}}" src="{{akatsuki.images[0]}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{akatsuki.name}}</h5>
-      </div>
-      <ul class="list-group list-group-flush">
-        <button type="button" (click)="habilitarFoto(akatsuki)" class="list-group-item list-group-item-success">{{ akatsuki.mostrarImagen ? 'Ocultar foto' : 'Ver foto' }}</button>
-        <button (click)="modificarNombre(akatsuki)" type="button" class="btn btn-outline-info">Modificar nombre</button>
-        <button (click)="eliminar(akatsuki)" type="button" class="btn btn-outline-danger">Eliminar</button>
-      </ul>
-    </div>
-  </div>
-</div>
+<app-header></app-header>
+<app-personajes></app-personajes>
