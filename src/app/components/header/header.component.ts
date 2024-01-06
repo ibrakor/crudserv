@@ -7,7 +7,7 @@ import {PersonajesComponent} from "../personajes/personajes.component";
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  constructor(public personajes: PersonajesComponent) {
+  constructor() {
   }
 
 }

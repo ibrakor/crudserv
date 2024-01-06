@@ -18,16 +18,36 @@ export class PersonajesComponent implements OnInit {
     this.obtenerPersonajes()
   }
 
-  mostrarTodasLasFotos() {
-    for (let akatsukiResponseElement of this.akatsukiResponse.akatsuki) {
-      akatsukiResponseElement.mostrarImagen = true
-    }
+  crearNuevoPersonaje() {
+    // Pide los datos del nuevo personaje
+    const nombre: string = prompt('Introduce el nombre del nuevo personaje') || "Sin nombre"
+    const imagen : string = prompt('Introduce la URL de la imagen del nuevo personaje')|| 'https://cuv.upc.edu/en/shared/imatges/fotos-professorat-i-professionals/anonimo.jpg/@@images/image.jpeg';
+
+    const imagenes: string[] = [imagen];
+
+    // Crea el nuevo personaje
+    const nuevoPersonaje: AkatsukiMember = {
+      id: 0,
+      name: nombre,
+      role: "",
+      images: imagenes,
+      mostrarImagen: false
+    };
+
+    // Añade el nuevo personaje a la lista
+    this.akatsukiResponse.akatsuki.unshift(nuevoPersonaje);
   }
+
 
   obtenerPersonajes() {
-    this.dataService.getCharacters().subscribe(result => this.akatsukiResponse = result)
-
+    this.dataService.getCharacters().subscribe(result => {
+      this.akatsukiResponse = result;
+      for (let akatsuki of this.akatsukiResponse.akatsuki) {
+        akatsuki.mostrarImagen = false;
+      }
+    });
   }
+
 
   habilitarFoto(akatsuki: any): void {
     akatsuki.mostrarImagen = akatsuki.mostrarImagen == false;
